@@ -1,0 +1,26 @@
+{
+  "name": "tech_assessment",
+  "version": "0.0.1",
+  "description": "The entry assignment for Diligent",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csabbee/tech_assessment.git"
+  },
+  "keywords": [
+    "assignment",
+    "assessment"
+  ],
+  "author": "Csaba Valyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/csabbee/tech_assessment/issues"
+  },
+  "homepage": "https://github.com/csabbee/tech_assessment#readme"
+}
