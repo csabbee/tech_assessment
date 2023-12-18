@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,6 +19,7 @@
     "noEmit": true,
   },
   "include": [
-    "client/src"
+    "client/src",
+    "client/vite.config.ts",
   ]
 }
