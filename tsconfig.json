@@ -23,5 +23,6 @@
   "include": [
     "client/src",
     "client/vite.config.ts",
+    "backend/src"
   ]
 }

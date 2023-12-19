@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "workspaces": [
-    "client"
+    "client",
+    "backend"
   ],
   "scripts": {
     "build:typed-scss": "typed-scss-modules \"./**/*.scss\" --ignore \"./node_modules/**/*.scss\"",
@@ -36,6 +37,7 @@
     "eslint-plugin-react": "^7.33.1",
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.2.4",
-    "typed-scss-modules": "^8.0.0"
+    "typed-scss-modules": "^8.0.0",
+    "typescript": "^5.2.2"
   }
 }
