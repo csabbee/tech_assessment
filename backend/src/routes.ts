@@ -2,6 +2,7 @@ import express from 'express'
 import superagent from 'superagent'
 
 import { THEMOVIEDB_API_KEY, THEMOVIEDB_URL } from '@config'
+import { createPosterUrl } from '@utils'
 import cacheFactory from './cache'
 
 const cacheModule = cacheFactory()
@@ -12,6 +13,13 @@ const router = express.Router()
 type SearchRequestBody = {
   keyword: string
   page: number
+}
+
+type MovideDBResponse = {
+  page: number
+  results: Array<{ poster_path: string }>
+  total_pages: number
+  total_results: number
 }
 
 router.get('/ping', (_, res) => res.send('pong'))
@@ -38,8 +46,19 @@ router.get('/search', (req, res, next) => {
     .get(url)
     .set('Authorization', `Bearer ${THEMOVIEDB_API_KEY}`)
     .then((response) => {
-      cache[cacheKey] = response.body
-      res.send({ ...response.body, fromCache: false })
+      const results = (response.body as MovideDBResponse).results.map((result) => {
+        if (!result.poster_path) {
+          return result
+        }
+
+        return {
+          ...result,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+          poster_path: createPosterUrl(result.poster_path) as string,
+        }
+      })
+      cache[cacheKey] = { ...response.body, results }
+      res.send({ ...response.body, results, fromCache: false })
     })
     .catch(next)
 })
