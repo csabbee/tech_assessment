@@ -35,14 +35,14 @@ describe('Cache tests', () => {
   describe('cacheModule statistics', () => {
     it('Should increment the all time try count whenever we are trying to access something in the cacheModule', () => {
       const { cache } = cacheModule
-      assert.strictEqual(cacheModule.stats.allTimeTryCount, 0)
+      assert.strictEqual(cacheModule.stats.sumTryCount, 0)
 
       cache.b = cache.a
       cache.b = cache.a
       cache.b = cache.a
       cache.b = cache.a
 
-      assert.strictEqual(cacheModule.stats.allTimeTryCount, 4)
+      assert.strictEqual(cacheModule.stats.sumTryCount, 4)
     })
 
     it('Should increment hit count when we are trying to access something that is in the cache', () => {
@@ -69,7 +69,7 @@ describe('Cache tests', () => {
 
       cache.c = cache.thisIsNotAHit
       assert.strictEqual(cacheModule.stats.hitCount, 0)
-      assert.strictEqual(cacheModule.stats.allTimeHitCount, 1)
+      assert.strictEqual(cacheModule.stats.sumHitCount, 1)
     })
   })
 })

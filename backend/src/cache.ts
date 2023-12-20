@@ -1,15 +1,15 @@
 import { CACHE_INVALIDATION } from './config'
 
-const allTimeCacheHitCountSymbol = Symbol('allTimeCacheHitCount')
-const allTimeTryCountSymbol = Symbol('allTimeTry')
+const sumCacheHitCountSymbol = Symbol('allTimeCacheHitCount')
+const sumTryCountSymbol = Symbol('allTimeTry')
 const cacheHitCountSymbol = Symbol('cacheHitCount')
 
 export type CacheModule = {
   cache: Record<string | symbol, unknown>
   stats: {
     hitCount: number
-    allTimeHitCount: number
-    allTimeTryCount: number
+    sumHitCount: number
+    sumTryCount: number
   }
 }
 
@@ -20,17 +20,17 @@ const cacheFactory = (): CacheModule => {
     enumerable: false,
     writable: true,
   })
-  Object.defineProperty(cache, allTimeCacheHitCountSymbol, {
+  Object.defineProperty(cache, sumCacheHitCountSymbol, {
     value: 0,
     enumerable: false,
     writable: true,
   })
-  Object.defineProperty(cache, allTimeTryCountSymbol, {
+  Object.defineProperty(cache, sumTryCountSymbol, {
     value: 0,
     enumerable: false,
     writable: true,
   })
-  const cacheStatProps = [allTimeTryCountSymbol, allTimeCacheHitCountSymbol, cacheHitCountSymbol]
+  const cacheStatProps = [sumTryCountSymbol, sumCacheHitCountSymbol, cacheHitCountSymbol]
 
   // TODO: method to invalidate whole cache
   const handler: ProxyHandler<Record<string | symbol, unknown>> = {
@@ -39,12 +39,12 @@ const cacheFactory = (): CacheModule => {
         return target[prop]
       }
 
-      target[allTimeTryCountSymbol] = Number(target[allTimeTryCountSymbol]) + 1
+      target[sumTryCountSymbol] = Number(target[sumTryCountSymbol]) + 1
       if (target[prop] === undefined) {
         target[cacheHitCountSymbol] = 0
       } else {
         target[cacheHitCountSymbol] = Number(target[cacheHitCountSymbol]) + 1
-        target[allTimeCacheHitCountSymbol] = Number(target[allTimeCacheHitCountSymbol]) + 1
+        target[sumCacheHitCountSymbol] = Number(target[sumCacheHitCountSymbol]) + 1
       }
       return target[prop]
     },
@@ -67,8 +67,8 @@ const cacheFactory = (): CacheModule => {
     get stats() {
       return {
         hitCount: proxy[cacheHitCountSymbol] as number,
-        allTimeHitCount: proxy[allTimeCacheHitCountSymbol] as number,
-        allTimeTryCount: proxy[allTimeTryCountSymbol] as number,
+        sumHitCount: proxy[sumCacheHitCountSymbol] as number,
+        sumTryCount: proxy[sumTryCountSymbol] as number,
       }
     },
   }
