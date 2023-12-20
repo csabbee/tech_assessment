@@ -12,6 +12,6 @@ void (async () => {
       })
     )
   } catch (e) {
-    console.log('error')
+    console.log('error', e)
   }
 })()
