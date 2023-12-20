@@ -1,8 +1,8 @@
 import express from 'express'
 import superagent from 'superagent'
 
+import { THEMOVIEDB_API_KEY, THEMOVIEDB_URL } from '@config'
 import cacheFactory from './cache'
-import { THEMOVIEDB_API_KEY, THEMOVIEDB_URL } from './config'
 
 const cacheModule = cacheFactory()
 const { cache } = cacheModule

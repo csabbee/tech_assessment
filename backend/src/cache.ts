@@ -1,4 +1,4 @@
-import { CACHE_INVALIDATION } from './config'
+import { CACHE_INVALIDATION } from '@config'
 
 const sumCacheHitCountSymbol = Symbol('allTimeCacheHitCount')
 const sumTryCountSymbol = Symbol('allTimeTry')

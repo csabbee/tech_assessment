@@ -1,8 +1,8 @@
 /*eslint-disable @typescript-eslint/no-floating-promises*/
+import { CACHE_INVALIDATION } from '@config'
 import assert from 'node:assert'
 import { after as afterAll, before as beforeAll, beforeEach, describe, it, mock } from 'node:test'
 import cacheFactory, { CacheModule } from './cache'
-import { CACHE_INVALIDATION } from './config'
 const cacheInvalidation = Number(CACHE_INVALIDATION)
 
 describe('Cache tests', () => {

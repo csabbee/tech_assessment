@@ -3,9 +3,13 @@
     "module": "NodeNext",
     "esModuleInterop": true,
     "target": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@utils": ["src/util/index.ts"],
+      "@config": ["src/config.ts"]
+    }
   },
   "lib": ["es2021"]
 }
