@@ -58,7 +58,7 @@ describe('Cache tests', () => {
       assert.strictEqual(cacheModule.stats.hitCount, 3)
     })
 
-    it('Should set the hit count to zero, but keep the all time hit count, when we are trying to access something that is not in the cache for the first time', () => {
+    it('Should set the hit count to zero, but keep the all time hit count, when we are trying to access something that is not in the cache', () => {
       const { cache } = cacheModule
       assert.strictEqual(cacheModule.stats.hitCount, 0)
 
