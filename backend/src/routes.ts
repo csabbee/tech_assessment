@@ -28,11 +28,11 @@ router.get('/search', (req, res, next) => {
     return
   }
 
-  const body = req.body as SearchRequestBody
+  const { keyword, page } = req.body as SearchRequestBody
 
-  const url = `${THEMOVIEDB_URL}/search/movie?include_adult=false&language=en-US&query=${
-    body.keyword
-  }&page=${body.page || 1}`
+  const url = `${THEMOVIEDB_URL}/search/movie?include_adult=false&language=en-US&query=${keyword}&page=${
+    page || 1
+  }`
 
   superagent
     .get(url)
