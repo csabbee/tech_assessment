@@ -7,6 +7,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "paths": {
+      "@mock*": ["src/mock/*"],
       "@utils": ["src/util/index.ts"],
       "@config": ["src/config.ts"]
     }
