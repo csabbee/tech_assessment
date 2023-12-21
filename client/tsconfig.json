@@ -4,7 +4,8 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["src/components/*"],
-      "@types": ["src/types.ts"]
+      "@types": ["src/types.ts"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": [

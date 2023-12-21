@@ -1,9 +1,10 @@
+import ClearIcon from '@mui/icons-material/Clear'
 import { Button, TextField } from '@mui/material'
 import { SetState } from '@staltz/use-profunctor-state'
 import { Promap } from '@types'
 import debounce from 'debounce'
-import { FormEvent, memo, useCallback, useEffect, useState } from 'react'
-import { searchContainer } from './search.module.scss'
+import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react'
+import { clearIconWrapper, searchContainer } from './search.module.scss'
 
 type SearchProps = {
   state: string
@@ -14,12 +15,11 @@ type SearchProps = {
 const Search = memo(({ state, setState }: SearchProps) => {
   const [searchKeyword, setSearchKeyword] = useState(state)
 
-  const handleOnInput = useCallback(
-    debounce((event: FormEvent) => {
-      const inputElement = event.target as HTMLInputElement
-      setSearchKeyword(() => inputElement.value)
+  const promoteSearchChange = useCallback(
+    debounce((keyword: string) => {
+      setState(() => keyword)
     }, 300),
-    [searchKeyword, setSearchKeyword]
+    []
   )
 
   useEffect(() => {
@@ -27,12 +27,32 @@ const Search = memo(({ state, setState }: SearchProps) => {
       return
     }
 
-    setState(() => searchKeyword)
+    promoteSearchChange(searchKeyword)
   }, [searchKeyword])
 
   return (
     <div className={searchContainer}>
-      <TextField onInput={handleOnInput} placeholder="Please enter something..." label="Search" />
+      <TextField
+        value={searchKeyword}
+        onInput={(event: ChangeEvent<HTMLInputElement>) => {
+          setSearchKeyword(event.target.value)
+        }}
+        placeholder="Please enter something..."
+        label="Search"
+        InputProps={{
+          endAdornment: (
+            <div
+              className={clearIconWrapper}
+              onClick={() => {
+                setSearchKeyword('')
+                setState(() => '')
+              }}
+            >
+              <ClearIcon />
+            </div>
+          ),
+        }}
+      />
       <Button
         variant="contained"
         onClick={() => {

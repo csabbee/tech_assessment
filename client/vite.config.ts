@@ -14,6 +14,7 @@ export default defineConfig({
     alias: {
       '@components': resolve(__dirname, './src/components'),
       '@types': resolve(__dirname, './src/types.ts'),
+      '@utils': resolve(__dirname, './src/utils'),
       '@designTokens': resolve(__dirname, '../design-tokens'),
     },
   },

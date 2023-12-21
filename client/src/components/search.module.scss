@@ -4,4 +4,10 @@
   display: grid;
   grid-template-columns: 4fr 1fr;
   column-gap: tokens.$space-400;
+
+  .clear-icon-wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
 }
