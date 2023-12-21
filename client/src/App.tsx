@@ -15,7 +15,9 @@ function App() {
     (search, state) => ({ ...state, search })
   )
 
-  useEffect(() => {}, [searchProf.state])
+  useEffect(() => {
+    console.log('asdasd')
+  }, [searchProf.state])
 
   return (
     <div className={app}>
