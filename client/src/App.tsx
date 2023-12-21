@@ -1,18 +1,26 @@
-import { app, appHeader, appLink, appLogo } from './app.module.scss'
-import logo from './logo.svg'
+import Search from '@components/Search'
+import useProfunctorState from '@staltz/use-profunctor-state/index'
+import { useEffect } from 'react'
+import { app } from './app.module.scss'
+
+const initialState = {
+  search: '',
+}
 
 function App() {
+  const appProf = useProfunctorState(initialState)
+
+  const searchProf = appProf.promap(
+    (state) => state.search,
+    (search, state) => ({ ...state, search })
+  )
+
+  useEffect(() => {}, [searchProf.state])
+
   return (
     <div className={app}>
-      <header className={appHeader}>
-        <img src={logo} className={appLogo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className={appLink} href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <Search {...searchProf} />
+      {appProf.state.search}
     </div>
   )
 }

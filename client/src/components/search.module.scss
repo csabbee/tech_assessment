@@ -1,0 +1,7 @@
+@use "@designTokens/_spacing" as tokens;
+
+.search-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  column-gap: tokens.$space-400;
+}

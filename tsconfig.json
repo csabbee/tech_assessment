@@ -20,9 +20,5 @@
     "noEmit": true,
   },
   "exclude": ["**/*.test.tsx"],
-  "include": [
-    "client/src",
-    "client/vite.config.ts",
-    "backend/src"
-  ]
+  "include": []
 }
