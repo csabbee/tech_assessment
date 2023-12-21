@@ -1,5 +1,6 @@
 import CacheNotification from '@components/CacheNotification'
 import Search from '@components/Search'
+import Movies from '@components/movies/Movies'
 import useProfunctorState from '@staltz/use-profunctor-state/index'
 import { FIRST_RENDER_KEY, Movie } from '@types'
 import queryMovies from '@utils/query-movies'
@@ -41,6 +42,11 @@ function App() {
     (_, state) => state
   )
 
+  const moviesProf = appProf.promap(
+    (state) => state.movies,
+    (_, state) => state
+  )
+
   useEffect(() => {
     if (!appProf.state.searchKeyword) {
       return
@@ -64,6 +70,7 @@ function App() {
     <div className={app}>
       <Search {...searchProf} />
       <CacheNotification {...cacheNotificationProf} />
+      <Movies {...moviesProf} />
       {appProf.state.searchKeyword}
     </div>
   )

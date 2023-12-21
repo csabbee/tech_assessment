@@ -1,0 +1,7 @@
+@use "@designTokens/spacing" as tokens;
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: tokens.$space-400;
+}
