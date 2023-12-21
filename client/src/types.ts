@@ -8,6 +8,8 @@ export interface Promap<T> {
   <S>(get: Getter<T, S>, set: Setter<T, S>, args?: any[]): ProfunctorState<S>
 }
 
+export const FIRST_RENDER_KEY = Symbol('firstRender')
+
 export type Movie = {
   adult: boolean
   backdrop_path: string

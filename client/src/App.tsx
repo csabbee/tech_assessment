@@ -1,12 +1,10 @@
+import CacheNotification from '@components/CacheNotification'
 import Search from '@components/Search'
-import { Alert } from '@mui/material'
 import useProfunctorState from '@staltz/use-profunctor-state/index'
-import { Movie } from '@types'
+import { FIRST_RENDER_KEY, Movie } from '@types'
 import queryMovies from '@utils/query-movies'
 import { useEffect } from 'react'
 import { app } from './app.module.scss'
-
-const FIRST_RENDER_KEY = Symbol('firstRender')
 
 type AppState = {
   searchKeyword: string
@@ -35,6 +33,13 @@ function App() {
     (state) => state.searchKeyword,
     (search, state) => ({ ...state, searchKeyword: search })
   )
+  const cacheNotificationProf = appProf.promap(
+    (state) => ({
+      fromCache: state.fromCache,
+      [FIRST_RENDER_KEY]: state[FIRST_RENDER_KEY],
+    }),
+    (_, state) => state
+  )
 
   useEffect(() => {
     if (!appProf.state.searchKeyword) {
@@ -42,7 +47,7 @@ function App() {
     }
     const { searchKeyword, page } = appProf.state
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
-    queryMovies({ keyword: searchKeyword, page }).then((result) => {
+    void queryMovies({ keyword: searchKeyword, page }).then((result) => {
       appProf.setState((prevState) => ({ ...prevState, ...result }) as AppState)
     })
   }, [searchProf.state])
@@ -58,13 +63,7 @@ function App() {
   return (
     <div className={app}>
       <Search {...searchProf} />
-      {appProf.state[FIRST_RENDER_KEY] ? (
-        <></>
-      ) : appProf.state.fromCache ? (
-        <Alert severity="success">Result is from cache</Alert>
-      ) : (
-        <Alert severity="info">Result is not from cache</Alert>
-      )}
+      <CacheNotification {...cacheNotificationProf} />
       {appProf.state.searchKeyword}
     </div>
   )
