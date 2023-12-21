@@ -1,6 +1,7 @@
 import CacheNotification from '@components/CacheNotification'
 import Search from '@components/Search'
 import Movies from '@components/movies/Movies'
+import { Pagination } from '@mui/material'
 import useProfunctorState from '@staltz/use-profunctor-state/index'
 import { FIRST_RENDER_KEY, Movie } from '@types'
 import queryMovies from '@utils/query-movies'
@@ -47,6 +48,11 @@ function App() {
     (_, state) => state
   )
 
+  const pagingProf = appProf.promap(
+    (state) => ({ page: state.page, count: state.totalPages }),
+    (pagingState, state) => ({ ...state, page: pagingState.page })
+  )
+
   useEffect(() => {
     if (!appProf.state.searchKeyword) {
       return
@@ -56,7 +62,7 @@ function App() {
     void queryMovies({ keyword: searchKeyword, page }).then((result) => {
       appProf.setState((prevState) => ({ ...prevState, ...result }) as AppState)
     })
-  }, [searchProf.state])
+  }, [searchProf.state, pagingProf.state.page])
 
   // TODO: find a less hacky way of dealing with the first render
   useEffect(() => {
@@ -71,7 +77,12 @@ function App() {
       <Search {...searchProf} />
       <CacheNotification {...cacheNotificationProf} />
       <Movies {...moviesProf} />
-      {appProf.state.searchKeyword}
+      <Pagination
+        {...pagingProf.state}
+        onChange={(_, value) => {
+          pagingProf.setState((prevState) => ({ ...prevState, page: value }))
+        }}
+      />
     </div>
   )
 }
