@@ -77,12 +77,14 @@ function App() {
       <Search {...searchProf} />
       <CacheNotification {...cacheNotificationProf} />
       <Movies {...moviesProf} />
-      <Pagination
-        {...pagingProf.state}
-        onChange={(_, value) => {
-          pagingProf.setState((prevState) => ({ ...prevState, page: value }))
-        }}
-      />
+      {appProf.state.totalPages > 1 && (
+        <Pagination
+          {...pagingProf.state}
+          onChange={(_, value) => {
+            pagingProf.setState((prevState) => ({ ...prevState, page: value }))
+          }}
+        />
+      )}
     </div>
   )
 }

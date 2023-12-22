@@ -1,10 +1,13 @@
 @use "@designTokens/_spacing" as tokens;
 
-.movie-card-content {
-  padding: tokens.$space-100;
+.movie-card {
+  padding: tokens.$space-200;
 
-  .movie-card-overview {
-    max-height: 200px;
-    overflow-y: scroll;
+  .movie-card-content {
+    padding: 0;
+    .movie-card-overview {
+      max-height: 200px;
+      overflow-y: scroll;
+    }
   }
 }
