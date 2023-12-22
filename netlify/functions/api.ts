@@ -1,6 +1,6 @@
+import routes from 'backend/src/routes'
 import express from 'express'
 import serverless from 'serverless-http'
-import routes from '../../src/routes'
 
 const app = express()
 
