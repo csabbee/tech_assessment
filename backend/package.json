@@ -4,6 +4,7 @@
   "description": "The backend part of the assignment",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --outDir dist && tsc-alias",
     "dev": "nodemon --exec ts-node -r tsconfig-paths/register -- ./src/index.ts",
     "serve": "ts-node -r tsconfig-paths/register ./src/index.ts",
     "test": "ts-node -r tsconfig-paths/register ./test.ts",
@@ -39,6 +40,7 @@
     "http-proxy-middleware": "^2.0.6",
     "nodemon": "^3.0.2",
     "supertest": "^6.3.3",
-    "superagent-mock": "^5.0.1"
+    "superagent-mock": "^5.0.1",
+    "tsc-alias": "^1.8.8"
   }
 }

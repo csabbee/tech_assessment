@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "module": "NodeNext",
     "esModuleInterop": true,
     "target": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "NodeNext",
     "sourceMap": true,
     "outDir": "dist",
     "paths": {
