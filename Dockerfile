@@ -15,5 +15,6 @@ COPY ./tsconfig.json ./
 
 RUN npm i
 RUN npm run build -w backend
+RUN npm run build -w client
 
 CMD ["npm", "run", "serve"]
