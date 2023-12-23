@@ -1,3 +1,7 @@
+# Documentation
+
+[Documentation](DOCUMENTATION.md)
+
 # Description:
 The task is to create a UI (whether it a backend or frontend rendered page) which has an input box and a search button.
 
