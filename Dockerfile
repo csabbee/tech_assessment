@@ -1,6 +1,8 @@
 FROM node:20-alpine
 LABEL authors="csabbee"
 
+ENV PORT=3333
+
 WORKDIR /app
 
 COPY ./backend ./backend
@@ -12,5 +14,6 @@ COPY ./package-lock.json ./
 COPY ./tsconfig.json ./
 
 RUN npm i
+RUN npm run build -w backend
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "serve"]
