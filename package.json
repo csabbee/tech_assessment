@@ -11,7 +11,7 @@
     "backend"
   ],
   "scripts": {
-    "serve": "npm run build -w backend && npm run serve:js -w backend & npm run dev -m client",
+    "serve": "npm run build -w backend && npm run serve:js -w backend & npm run dev -w client",
     "dev": "npm run dev -w backend & npm run dev -w client",
     "build:typed-scss": "typed-scss-modules \"./**/*.scss\" --ignore \"./node_modules/**/*.scss\"",
     "test": "echo \"Error: no test specified\" && exit 1"
