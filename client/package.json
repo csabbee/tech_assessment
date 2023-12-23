@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "serve dist -p 5173",
+    "test": "echo testing",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

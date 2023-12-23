@@ -28,6 +28,11 @@ CACHE_INVALIDATION=120000
 NODE_ENV=dev
 ```
 
+### Running tests
+```bash
+npm test
+```
+
 ## Considerations
 
 ### Frontend
