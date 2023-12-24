@@ -66,4 +66,15 @@ I found out that NodeJs has a [full fledged test runner](https://nodejs.org/docs
 
 They even thought about mocking/progressing the timers (`setTimeout`, `setInterval`) so testing `async` methods are really easy.
 
+### Future improvements
+It took me more time than it should have to configure and deploy the application so a couple of things
+that should have been done get to put here on the list
 
+1. Mobile view: Right now that is nonexistent
+2. A streamlined deployment process: Currently the deployment is happening by hand.
+   1. Split the docker containers into client and frontend
+   2. Create `docker-compose` configuration
+3. The endpoint to get the cache statistics is [defined](https://rpi1.sslprvy.hu/assignment/cache-stats), a place where it can be viewed would be nice
+4. Error handling
+   1. Modify backend end point to send back error messages when something happens
+   2. Display this error in place of the cache notification
