@@ -19,7 +19,7 @@ After that you can reach the application here: [http://localhost:3000](http://lo
 ### Customization
 If you want to customize the configuration of the backend a `.env` file needs to be created in the `backend` directory:
 ```
-THEMOVIEDB_API_KEY=you_api_key
+THEMOVIEDB_API_KEY=your_api_key
 THEMOVIEDB_URL=https://api.themoviedb.org/3
 THEMOVIEDB_IMAGE_URL=https://image.tmdb.org/t/p
 PORT=3000
@@ -57,7 +57,7 @@ I wanted to use `scss` for styling and utilize its module system, but I was unab
 Eventually that's why I decided to use `Vite`
 
 #### React MUI
-For me this was just a preference really. I like the material UI design/look, and I've know about React MUI for a while now.
+For me this was just a preference really. I like the material UI design/look, and I've known about React MUI for a while now.
 
 ### Backend
 #### Testing
