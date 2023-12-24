@@ -78,3 +78,4 @@ that should have been done get to put here on the list
 4. Error handling
    1. Modify backend end point to send back error messages when something happens
    2. Display this error in place of the cache notification
+5. Fix the hanging test case in `cache.test.ts` (TODO is added)
