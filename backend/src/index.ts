@@ -1,4 +1,4 @@
-import { NDOE_ENV, PORT } from '@config'
+import { CLIENT, NDOE_ENV, PORT } from '@config'
 import express from 'express'
 import { createProxyMiddleware } from 'http-proxy-middleware'
 
@@ -14,7 +14,7 @@ if (NDOE_ENV === 'dev') {
   app.use(
     '/',
     createProxyMiddleware({
-      target: 'http://localhost:5173',
+      target: `http://${CLIENT}:5173`,
       changeOrigin: true,
     })
   )

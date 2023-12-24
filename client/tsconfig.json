@@ -1,13 +1,31 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
       "@components/*": ["src/components/*"],
       "@types": ["src/types.ts"],
       "@utils/*": ["src/utils/*"]
-    }
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
+  "exclude": ["**/*.test.tsx"],
   "include": [
     "./src",
     "vite.config.ts"

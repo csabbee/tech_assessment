@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  backend:
+    env_file:
+      - ./backend/.env
+    networks:
+      - assignment
+    image: assignment_backend
+    environment:
+      - CLIENT=assignment_client
+    ports:
+      - "3333:3333"
+  client:
+    container_name: assignment_client
+    networks:
+      - assignment
+    image: assignment_client
+networks:
+  assignment:

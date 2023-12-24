@@ -1,0 +1,11 @@
+{
+  "name": "client-serve",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "serve dist -p 5173"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
