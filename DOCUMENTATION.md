@@ -15,6 +15,18 @@ This will start both the `client` and the `backend` part of the application
 
 After that you can reach the application here: [http://localhost:3000](http://localhost:3000)
 
+### SCSS
+SCSS module system is being utilized and since we are using typescript we need type definitions for them,
+otherwise TS would complain that what wea are trying to import is not exported from the given file.
+
+This is where `typed-scss-modules` comes handy, it will generate the `.d.ts` file for every `.scss` file
+
+The only caveat right now is that you have to run it by hand when you are creating a new `scss` file
+or modifying the class names
+
+```bash
+npm run build:typed-scss
+```
 
 ### Customization
 If you want to customize the configuration of the backend a `.env` file needs to be created in the `backend` directory:
