@@ -1,0 +1,5 @@
+@use "@designTokens/_breakpoints" as breakpoints;
+
+@mixin phone-only {
+  @media screen and (max-width: breakpoints.$phone) { @content }
+}

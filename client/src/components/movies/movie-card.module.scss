@@ -1,4 +1,5 @@
 @use "@designTokens/_spacing" as tokens;
+@use "@src/common" as common;
 
 .movie-card {
   padding: tokens.$space-200;
@@ -8,6 +9,29 @@
     .movie-card-overview {
       max-height: 200px;
       overflow-y: scroll;
+
+      .movie-description {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@include common.phone-only {
+  .movie-card {
+    padding: tokens.$space-200;
+    font-size: 12px;
+
+    .movie-card-content {
+      padding: 0;
+      .movie-card-overview {
+        max-height: 200px;
+        overflow-y: scroll;
+
+        .movie-description {
+          font-size: 0.8rem
+        }
+      }
     }
   }
 }

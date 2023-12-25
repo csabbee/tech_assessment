@@ -1,4 +1,5 @@
 @use "@designTokens/_spacing" as tokens;
+@use "@src/common" as common;
 
 .search-container {
   display: grid;
@@ -9,5 +10,12 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+  }
+}
+
+@include common.phone-only {
+  .search-container {
+    grid-template-columns: 4fr 2fr;
+    column-gap: tokens.$space-100;
   }
 }

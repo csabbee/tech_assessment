@@ -16,6 +16,7 @@ export default defineConfig({
       '@types': resolve(__dirname, './src/types.ts'),
       '@utils': resolve(__dirname, './src/utils'),
       '@designTokens': resolve(__dirname, '../design-tokens'),
+      '@src': resolve(__dirname, './src'),
     },
   },
   plugins: [react()],

@@ -1,7 +1,15 @@
 @use "@designTokens/spacing" as tokens;
+@use "@src/common" as common;
 
 .movies-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: tokens.$space-400;
+}
+
+@include common.phone-only {
+  .movies-grid {
+    grid-template-columns: 1fr;
+    gap: tokens.$space-200;
+  }
 }

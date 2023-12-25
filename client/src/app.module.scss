@@ -1,4 +1,5 @@
 @use "@designTokens/spacing" as tokens;
+@use "@src/common" as common;
 
 .app {
   margin-left: auto;
@@ -11,4 +12,11 @@
   display: flex;
   flex-direction: column;
   gap: tokens.$space-400;
+}
+
+@include common.phone-only {
+  .app {
+    padding: tokens.$space-100;
+    gap: tokens.$space-200;
+  }
 }

@@ -1,6 +1,11 @@
 import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { Movie } from '@types'
-import { movieCard, movieCardContent, movieCardOverview } from './movie-card.module.scss'
+import {
+  movieCard,
+  movieCardContent,
+  movieCardOverview,
+  movieDescription,
+} from './movie-card.module.scss'
 import noImageUrl from './no-image.webp'
 
 const MovieCard = ({ poster_path, overview, title }: Movie) => {
@@ -16,7 +21,9 @@ const MovieCard = ({ poster_path, overview, title }: Movie) => {
           {title}
         </Typography>
         <div className={movieCardOverview}>
-          <Typography component="p">{overview}</Typography>
+          <Typography component="p" className={movieDescription}>
+            {overview}
+          </Typography>
         </div>
       </CardContent>
     </Card>
