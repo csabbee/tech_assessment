@@ -28,4 +28,6 @@ COPY --from=build /app/dist ./dist
 
 RUN npm i
 
+RUN sed -i"" -e 's+fetch("/search+fetch("/assignment/search+g' /app/dist/assets/index*.js
+
 CMD ["npm", "run", "serve"]
