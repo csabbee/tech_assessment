@@ -17,7 +17,7 @@ After that you can reach the application here: [http://localhost:3000](http://lo
 
 ### SCSS
 SCSS module system is being utilized and since we are using typescript we need type definitions for them,
-otherwise TS would complain that what wea are trying to import is not exported from the given file.
+otherwise TS would complain that what we are trying to import is not exported from the given file.
 
 This is where `typed-scss-modules` comes handy, it will generate the `.d.ts` file for every `.scss` file
 
