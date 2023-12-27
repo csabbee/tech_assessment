@@ -88,7 +88,7 @@ that should have been done get to put here on the list
 2. A streamlined deployment process: Currently the deployment is happening by hand.
    1. ✅ Split the docker containers into client and frontend
    2. ✅ Create `docker-compose` configuration
-   3. Solve the reverse proxy issue (need to replace urls in the client by hand)
+   3. ✅ Solve the reverse proxy issue (need to replace urls in the client by hand)
 3. The endpoint to get the cache statistics is [defined](https://rpi1.sslprvy.hu/assignment/cache-stats), a place where it can be viewed would be nice
 4. Error handling
    1. Modify backend end point to send back error messages when something happens
