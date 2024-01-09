@@ -19,5 +19,10 @@ export default defineConfig({
       '@src': resolve(__dirname, './src'),
     },
   },
+  server: {
+    proxy: {
+      '/search': 'http://localhost:3333',
+    },
+  },
   plugins: [react()],
 })
