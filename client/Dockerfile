@@ -9,6 +9,8 @@ RUN npm i
 
 FROM setup as build
 
+ARG prefix
+
 WORKDIR /app
 
 COPY ./client/src ./src
@@ -16,6 +18,8 @@ COPY ./client/index.html .
 COPY ./client/tsconfig.json .
 COPY ./client/vite.config.ts .
 COPY ./design-tokens ./design-tokens
+
+ENV VITE_BACKEND_PREFIX=$prefix
 
 RUN npm run build
 
@@ -27,7 +31,5 @@ COPY ./client/package-serve.json ./package.json
 COPY --from=build /app/dist ./dist
 
 RUN npm i
-
-RUN sed -i"" -e 's+fetch("/search+fetch("/assignment/search+g' /app/dist/assets/index*.js
 
 CMD ["npm", "run", "serve"]

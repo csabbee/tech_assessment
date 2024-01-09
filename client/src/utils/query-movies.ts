@@ -1,4 +1,5 @@
 import { Movie } from '@types'
+import { prefix } from '@utils/config'
 
 type QueryMoviesProps = {
   keyword: string
@@ -20,7 +21,7 @@ type MappedResponse = {
 }
 
 const queryMovies = async (props: QueryMoviesProps): Promise<MappedResponse> => {
-  return fetch('/search', {
+  return fetch(`${prefix}/search`, {
     method: 'POST',
     mode: 'cors',
     headers: {
